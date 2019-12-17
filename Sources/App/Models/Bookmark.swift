@@ -14,6 +14,7 @@ final class Bookmark: SQLiteModel {
     var link: String
     var imageUrl: String
     var isFavorite: Bool?
+    var dateCreate: Date?
     
     init(id: Int? = nil, name: String, link: String, imageUrl: String, isFav: Bool = false) {
         self.id = id
@@ -21,6 +22,7 @@ final class Bookmark: SQLiteModel {
         self.link = link
         self.imageUrl = imageUrl
         self.isFavorite = isFav
+        self.dateCreate = Date()
     }
 }
 

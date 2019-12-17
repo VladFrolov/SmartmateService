@@ -13,12 +13,15 @@ final class Task: SQLiteModel {
     var name: String
     var description: String?
     var isResolved: Bool?
+    var dateCreate: Date?
+    var dateCompletion: Date?
     
     init(id: Int? = nil, name: String, description: String = "", isResolved: Bool = false) {
         self.id = id
         self.name = name
         self.description = description
         self.isResolved = isResolved
+        self.dateCreate = Date()
     }
 }
 
