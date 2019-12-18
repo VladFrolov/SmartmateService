@@ -5,14 +5,14 @@
 //  Created by Владислав Фролов on 16.12.2019.
 //
 
-import FluentSQLite
+import FluentPostgreSQL
 import Vapor
 
-final class Task: SQLiteModel {
+final class Task: PostgreSQLModel {
     var id: Int?
     var name: String
     var description: String?
-    var isResolved: Bool?
+    var isResolved: Bool
     var dateCreate: Date?
     var dateCompletion: Date?
     

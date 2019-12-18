@@ -5,15 +5,15 @@
 //  Created by Владислав Фролов on 16.12.2019.
 //
 
-import FluentSQLite
+import FluentPostgreSQL
 import Vapor
 
-final class Bookmark: SQLiteModel {
+final class Bookmark: PostgreSQLModel {
     var id: Int?
     var name: String
     var link: String
     var imageUrl: String
-    var isFavorite: Bool?
+    var isFavorite: Bool
     var dateCreate: Date?
     
     init(id: Int? = nil, name: String, link: String, imageUrl: String, isFav: Bool = false) {
