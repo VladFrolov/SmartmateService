@@ -7,6 +7,7 @@
 
 import FluentPostgreSQL
 import Vapor
+import Pagination
 
 final class Bookmark: PostgreSQLModel {
     var id: Int?
@@ -29,3 +30,4 @@ final class Bookmark: PostgreSQLModel {
 extension Bookmark: Content {}
 extension Bookmark: Migration {}
 extension Bookmark: Parameter {}
+extension Bookmark: Paginatable {}

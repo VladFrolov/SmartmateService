@@ -6,35 +6,36 @@
 //
 
 import Vapor
+import Pagination
 
 final class BookmarksContoller {
     
-    func list(_ request: Request) throws -> Future<[Bookmark]> {
-        return Bookmark.query(on: request).all()
+    func list(_ req: Request) throws -> Future<Paginated<Bookmark>> {
+        return try Bookmark.query(on: req).paginate(for: req)
     }
     
-    func create(_ request: Request) throws -> Future<Bookmark> {
-        return try request.content.decode(Bookmark.self).flatMap { bookmark in
-            return bookmark.save(on: request)
+    func create(_ req: Request) throws -> Future<Bookmark> {
+        return try req.content.decode(Bookmark.self).flatMap { bookmark in
+            return bookmark.save(on: req)
         }
     }
  
-    func update(_ request: Request) throws -> Future<Bookmark> {
-        return try request.parameters.next(Bookmark.self).flatMap({ bookmark in
-            return try request.content.decode(Bookmark.self).flatMap { newBookmark in
+    func update(_ req: Request) throws -> Future<Bookmark> {
+        return try req.parameters.next(Bookmark.self).flatMap({ bookmark in
+            return try req.content.decode(Bookmark.self).flatMap { newBookmark in
                 bookmark.name = newBookmark.name
                 bookmark.link = newBookmark.link
                 bookmark.imageUrl = newBookmark.imageUrl
                 bookmark.isFavorite = newBookmark.isFavorite
                 
-                return bookmark.save(on: request)
+                return bookmark.save(on: req)
             }
         })
     }
     
-    func delete(_ request: Request) throws -> Future<HTTPStatus> {
-        return try request.parameters.next(Bookmark.self).flatMap { bookmark in
-            return bookmark.delete(on: request)
+    func delete(_ req: Request) throws -> Future<HTTPStatus> {
+        return try req.parameters.next(Bookmark.self).flatMap { bookmark in
+            return bookmark.delete(on: req)
         }.transform(to: .ok)
     }
 }

@@ -7,7 +7,8 @@
 
 import FluentPostgreSQL
 import Vapor
-
+import Pagination
+    
 final class Task: PostgreSQLModel {
     var id: Int?
     var name: String
@@ -28,3 +29,4 @@ final class Task: PostgreSQLModel {
 extension Task: Content {}
 extension Task: Migration {}
 extension Task: Parameter {}
+extension Task: Paginatable {}
