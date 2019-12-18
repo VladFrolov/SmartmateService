@@ -24,7 +24,7 @@
 1. name$ brew install postgresql
 2. name$ initdb /usr/local/var/postgres
 3. name$ brew services start postgresql
-4. name$ createdb mycooldb;
+4. name$ createdb SmartmateDatabase;
 
 Далее открыть проект, в нём найти файл configure.swift и добавить в него следующие изменения:
 
