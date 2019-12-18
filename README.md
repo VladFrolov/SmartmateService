@@ -28,13 +28,13 @@
 
 Далее открыть проект, в нём найти файл configure.swift и добавить в него следующие изменения:
 
-let postgresqlConfig = PostgreSQLDatabaseConfig(
-    hostname: "127.0.0.1",
-    port: 5432,
-    username: "vladislavfrolov", <---- заменить на собственное имя пользователя
-    database: "SmartmateDatabase",
-    password: nil
-  )
-  services.register(postgresqlConfig)
+let postgresqlConfig = PostgreSQLDatabaseConfig( <br />
+    hostname: "127.0.0.1", <br />
+    port: 5432, <br />
+    username: "vladislavfrolov", <---- заменить на собственное имя пользователя <br />
+    database: "SmartmateDatabase", <br />
+    password: nil <br />
+) <br />
+services.register(postgresqlConfig)
   
 После этого можно собирать проект и проверять запросы по адресу: http://localhost:8080/
